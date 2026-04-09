@@ -6,7 +6,7 @@
     },
     "id": "1red7a.fps-extrapolation",
     "name": "Frame Extrapolation",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "developer": "1Red7A",
     "description": "Smooths gameplay by predicting player position between physics ticks.",
     "settings": {
@@ -14,7 +14,39 @@
             "type": "bool",
             "default": true,
             "name": "Enable Frame Extrapolation",
-            "description": "Smooths between frames by predicting where the player will be using its velocity."
+            "description": "Master toggle. Smooths between frames by predicting where the player will be using its velocity."
+        },
+        "extrapolate-camera": {
+            "type": "bool",
+            "default": true,
+            "name": "Extrapolate Camera",
+            "description": "Smooths the camera position between physics ticks."
+        },
+        "extrapolate-player": {
+            "type": "bool",
+            "default": true,
+            "name": "Extrapolate Player",
+            "description": "Smooths player position and rotation between physics ticks."
+        },
+        "extrapolate-ground": {
+            "type": "bool",
+            "default": true,
+            "name": "Extrapolate Ground",
+            "description": "Smooths ground layer scrolling between physics ticks."
+        },
+        "disable-in-practice": {
+            "type": "bool",
+            "default": false,
+            "name": "Disable in Practice Mode",
+            "description": "Turns off extrapolation during practice mode."
+        },
+        "max-percent": {
+            "type": "float",
+            "default": 1.5,
+            "min": 1.0,
+            "max": 2.0,
+            "name": "Max Extrapolation Percent",
+            "description": "Caps how far ahead the mod can predict. Lower is safer, higher is smoother during lag spikes."
         }
     }
 }
