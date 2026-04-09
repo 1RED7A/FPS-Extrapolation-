@@ -1,0 +1,37 @@
+name: Build Geode Mod
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+    branches: ["*"]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        config:
+          - name: Windows
+            os: windows-latest
+            platform: win
+
+          - name: Android32
+            os: ubuntu-latest
+            platform: android32
+
+          - name: Android64
+            os: ubuntu-latest
+            platform: android64
+
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          sdk: latest
+          target: ${{ matrix.config.platform }}
+          export-pdb: true
